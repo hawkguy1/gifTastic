@@ -7,7 +7,8 @@ body {
     background-image: url("greyBackground.png");
     padding: 25px;
     margin: 20 0 20 0px;
-    border: 5px solid white;
+    border: 5px solid;
+    border-color: white grey grey white;
 }
 #titleDiv h1{ 
     color: white;
@@ -17,20 +18,14 @@ body {
     text-align: center;
     letter-spacing: 5px;
 }
-/* ----- BUTTON CONTAINER ----- */
-#gifButtons {
-    background-image: url("greyBackground.png");
-    padding: 25 50 25 50px;
-    border: 5px solid white;
-}
-/* ----- FORM/GIPHY CONTAINER ----- */
-
+/* ----- FORM/BUTTON CONTAINER ----- */
 /* ----- FORM ----- */
 #formColumn {
     background-image: url("greyBackground.png");
     padding: 25px;
     margin: 0px;
-    border: 5px solid white;
+    border: 5px solid;
+    border-color: white grey grey white;
 }
 #addForm {
     color: white;
@@ -40,11 +35,22 @@ body {
 #instrumentAdder{ 
     text-align: center;
 }
-
-/* ----- GIPHY ----- */
+/* ----- BUTTONS ----- */
+#gifButtons {
+    background-image: url("greyBackground.png");
+    padding: 25 50 25 50px;
+    border: 5px solid;
+    border-color: white grey grey white;
+}
+/* ----- GIPHY CONTAINER ----- */
 #giphyColumn {
     background-image: url("greyBackground.png");
     padding: 25px;
     margin-top: 20px;
-    border: 5px solid white;
+    margin-bottom: 20px;
+    border: 5px solid;
+    border-color: white grey grey white;
+}
+#giphyArea {
+    padding: 25px;
 }
