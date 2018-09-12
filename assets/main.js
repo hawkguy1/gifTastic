@@ -28,12 +28,13 @@ $(document).ready(function () {
         }
     });
     //-- SHOW GIPHY ACCORDING TO BUTTON CLICKED --//
-    $("#giphyButtons").on("click", ".giphyButtons", showGiphy());
+    $(document).on("click", ".instruments", showGiphy);
     function showGiphy() {
-        var giphyName = $(this).attr("data-name");
+        var giphyName = $(this).attr("gifButtons");
         var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=QeJQJNQ2m3JzWEePVxhm6XDKAajxDxP0&q=" + giphyName + "&limit=10&offset=0&rating=G&lang=en";
         $("#giphyColumn").empty();
         console.log(giphyName);
+        console.log(queryURL);
         console.log(showGiphy);
         $.ajax({
             url: queryURL,
@@ -49,7 +50,7 @@ $(document).ready(function () {
                 giphyImage.attr("data-animate", results[i].images.fixed_height.url);
                 giphyImage.addClass("gif");
                 giphyImage.attr("data-state", "still");
-                var newItemdiv = $('<div id="giphyColumn">');
+                var newItemdiv = $('<div id="giphyArea">');
                 var gifRating = results[i].rating;
                 var divRating = $("<p>").text("RATING: " + gifRating);
                 newItemdiv.append(divRating);
