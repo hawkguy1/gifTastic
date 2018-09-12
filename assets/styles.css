@@ -21,7 +21,6 @@ body {
 #gifButtons {
     background-image: url("greyBackground.png");
     padding: 25 50 25 50px;
-    /*margin-left: 95px;*/
     border: 5px solid white;
 }
 /* ----- FORM/GIPHY CONTAINER ----- */
