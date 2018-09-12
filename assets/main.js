@@ -20,10 +20,11 @@ $(document).ready(function () {
     $("#addButton").on("click", function (event) {
         event.preventDefault();
         var addInstrument = $("#input").val().trim();
-        if (addInstrument !== " ") {
+        console.log("ADDING INSTRUMENT: " + addInstrument);
+        if (addInstrument != " ") {
             instruments.push(addInstrument);
             addInstrumentButtons();
-            $("#input").val(" ");
+            $("#instrumentAdder").val();
         }
     });
     $(document).on("click", ".giphyButtons", showGiphy);
