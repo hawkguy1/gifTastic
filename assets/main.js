@@ -68,7 +68,7 @@ $(document).ready(function () {
             console.log("GIPHY RESULTS: " + results)
 
             for (var i = 0; i < results.length; i++) {
-        
+                
                 var giphyDiv = $('<div>');
                 var giphyRating = $("<p>").text("RATING: " + results[i].rating);
                 var giphyImage = $("<img>");
@@ -77,11 +77,11 @@ $(document).ready(function () {
                 console.log(giphyRating);
                 console.log(giphyImage);
 
-                giphyImage.attr("src", results[i].images.fixed_height.url);
-                giphyImage.attr("data-still", results[i].images.fixed_height.url);
+                giphyImage.attr("src", results[i].images.fixed_height_still.url);
+                giphyImage.attr("data-still", results[i].images.fixed_height_still.url);
                 giphyImage.attr("data-animate", results[i].images.fixed_height.url);
                 giphyImage.addClass("gif");
-                giphyImage.attr("data-state", "still");
+                //giphyImage.attr("data-state", "still");
                 giphyDiv.prepend(giphyRating);
                 giphyDiv.prepend(giphyImage);
 
@@ -90,7 +90,7 @@ $(document).ready(function () {
         });
     }
     //-- CLICK TO MAKE MOVE OR STOP MOVING --//
-    $("#giphyArea").on("click", function () {
+    $(document).on("click", ".gif", function () {
 
         var state = $(this).attr("data-state");
 
