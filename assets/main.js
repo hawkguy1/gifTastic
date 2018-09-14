@@ -1,5 +1,5 @@
 //-- INSTRUMENT ARRAY --//
-var instruments = ["BAGPIPES", "BANJO", "BASSOON", "BUGLE", "CELLO", "CLARINET", "DIDGERIDOO", "DRUMS", "GUITAR", "HARMONICA", "KAZOO", "MARACAS", "MARIMBA", "OBOE", "OCARINA", "ORGAN", "PICCOLO", "SAXOPHONE", "SOUSAPHONE", "TAMBOURINE", "TROMBONE", "TRUMPET", "TUBA", "VIOLIN"]
+var instruments = ["BAGPIPES", "BANJO", "BASSOON", "BUGLE", "CELLO", "CLARINET", "DIDGERIDOO", "DRUMS", "GUITAR", "HARMONICA", "KAZOO", "MARACAS", "MARIMBA", "OBOE", "OCARINA", "ORGAN", "PIANO", "SAXOPHONE", "SOUSAPHONE", "TAMBOURINE", "TROMBONE", "TRUMPET", "TUBA", "VIOLIN"]
 
 console.log("INSTRUMENTS: " + instruments)
 
@@ -10,7 +10,7 @@ $(document).ready(function () {
 
     function addInstrumentButtons() {
         
-        $("#giphyButton").empty();
+        $("#giphyButtons").empty();
         
         for (var i = 0; i < instruments.length; i++) {
 
@@ -25,7 +25,7 @@ $(document).ready(function () {
         }
     }
     
-    //-- ADDS NEW INSTRUMENT BUTTONS --//
+    //-- ADDS NEW INSTRUMENT BUTTONS --// **THIS IS FIRING TWICE
     $("#addButton").on("click", function (event) {
         
         event.preventDefault();
@@ -49,10 +49,8 @@ $(document).ready(function () {
     
     function showGiphy() {
 
-        var giphyName = $(this).attr("giphyButtons");
+        var giphyName = $(this).attr("data-name");
         var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=QeJQJNQ2m3JzWEePVxhm6XDKAajxDxP0&q=" + giphyName + "&limit=10&offset=0&rating=G&lang=en";
-        
-        $("#giphyColumn").empty();
         
         console.log(giphyName);
         console.log(queryURL);
@@ -70,7 +68,7 @@ $(document).ready(function () {
             console.log("GIPHY RESULTS: " + results)
 
             for (var i = 0; i < results.length; i++) {
-                
+        
                 var giphyDiv = $('<div>');
                 var giphyRating = $("<p>").text("RATING: " + results[i].rating);
                 var giphyImage = $("<img>");
@@ -80,8 +78,12 @@ $(document).ready(function () {
                 console.log(giphyImage);
 
                 giphyImage.attr("src", results[i].images.fixed_height.url);
-                giphyDiv.append(giphyRating);
-                giphyDiv.append(giphyImage);
+                giphyImage.attr("data-still", results[i].images.fixed_height.url);
+                giphyImage.attr("data-animate", results[i].images.fixed_height.url);
+                giphyImage.addClass("gif");
+                giphyImage.attr("data-state", "still");
+                giphyDiv.prepend(giphyRating);
+                giphyDiv.prepend(giphyImage);
 
                 $("#giphyArea").prepend(giphyDiv);
             }
@@ -98,7 +100,7 @@ $(document).ready(function () {
             $(this).attr("data-state", "animate");
         }
         else {
-            
+
             $(this).attr("src", $(this).attr("data-still"));
             $(this).attr("data-state", "still");
         }
